@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>api</module>
+        <module>shared</module>
     </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>

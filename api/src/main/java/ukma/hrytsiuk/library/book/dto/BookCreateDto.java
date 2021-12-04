@@ -1,6 +1,7 @@
 package ukma.hrytsiuk.library.book.dto;
 
 import lombok.*;
+import ukma.hrytsiuk.library.db.entities.book.model.BookEntity;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -21,4 +22,12 @@ public class BookCreateDto {
     @NotNull
     @Pattern(regexp = "^[a-zA-Z0-9 \\.]{4,}$")
     private String author;
+
+    public BookEntity toEntity() {
+        return BookEntity.builder()
+                .title(getTitle())
+                .isbn(getIsbn())
+                .author(getAuthor())
+                .build();
+    }
 }

@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import ukma.hrytsiuk.library.book.BookRepository;
-import ukma.hrytsiuk.library.book.model.BookEntity;
+import ukma.hrytsiuk.library.db.entities.book.BookRepository;
+import ukma.hrytsiuk.library.db.entities.book.model.BookEntity;
 
 import java.util.List;
 

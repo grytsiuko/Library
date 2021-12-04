@@ -6,7 +6,8 @@ import ukma.hrytsiuk.library.book.dto.BookCreateDto;
 import ukma.hrytsiuk.library.book.dto.BookResponseDto;
 import ukma.hrytsiuk.library.book.exception.BookIsbnAlreadyExistsException;
 import ukma.hrytsiuk.library.book.exception.BookNotFoundException;
-import ukma.hrytsiuk.library.book.model.BookEntity;
+import ukma.hrytsiuk.library.db.entities.book.BookRepository;
+import ukma.hrytsiuk.library.db.entities.book.model.BookEntity;
 
 import javax.transaction.Transactional;
 
@@ -31,7 +32,7 @@ public class BookService {
         if (bookRepository.existsByIsbnIgnoreCase(createDto.getIsbn())) {
             throw new BookIsbnAlreadyExistsException(createDto.getIsbn());
         }
-        BookEntity bookEntity = BookEntity.fromDto(createDto);
+        BookEntity bookEntity = createDto.toEntity();
         bookRepository.save(bookEntity);
     }
 }

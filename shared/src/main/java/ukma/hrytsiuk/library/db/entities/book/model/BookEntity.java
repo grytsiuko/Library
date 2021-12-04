@@ -1,7 +1,6 @@
-package ukma.hrytsiuk.library.book.model;
+package ukma.hrytsiuk.library.db.entities.book.model;
 
 import lombok.*;
-import ukma.hrytsiuk.library.book.dto.BookCreateDto;
 
 import javax.persistence.*;
 
@@ -27,12 +26,4 @@ public class BookEntity {
 
     @Column(name = "author", nullable = false)
     private String author;
-
-    public static BookEntity fromDto(BookCreateDto createDto) {
-        return BookEntity.builder()
-                .title(createDto.getTitle())
-                .isbn(createDto.getIsbn())
-                .author(createDto.getAuthor())
-                .build();
-    }
 }
