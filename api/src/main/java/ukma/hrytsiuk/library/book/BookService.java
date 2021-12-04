@@ -23,11 +23,12 @@ public class BookService {
     }
 
     @Transactional
-    public void addNewBook(BookCreateDto createDto) {
+    public Integer addNewBook(BookCreateDto createDto) {
         if (bookRepository.existsByIsbnIgnoreCase(createDto.getIsbn())) {
             throw new BookIsbnAlreadyExistsException(createDto.getIsbn());
         }
         BookEntity bookEntity = createDto.toEntity();
         bookRepository.save(bookEntity);
+        return bookEntity.getId();
     }
 }

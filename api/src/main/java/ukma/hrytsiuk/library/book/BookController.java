@@ -24,7 +24,7 @@ public class BookController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public void create(@Valid @RequestBody BookCreateDto createDto) {
-        bookService.addNewBook(createDto);
+    public Integer create(@Valid @RequestBody BookCreateDto createDto) {
+        return bookService.addNewBook(createDto);
     }
 }
