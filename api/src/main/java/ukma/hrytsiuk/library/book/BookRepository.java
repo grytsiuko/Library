@@ -7,8 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import ukma.hrytsiuk.library.book.model.BookEntity;
 
-import java.util.Optional;
-
 @Repository
 public interface BookRepository extends JpaRepository<BookEntity, Integer> {
 
