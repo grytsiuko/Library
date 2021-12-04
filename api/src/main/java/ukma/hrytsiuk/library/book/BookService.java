@@ -19,12 +19,7 @@ public class BookService {
     @Transactional
     public BookResponseDto getById(Integer id) {
         var result = bookRepository.findById(id).orElseThrow(BookNotFoundException::new);
-        return new BookResponseDto(
-                result.getId(),
-                result.getTitle(),
-                result.getAuthor(),
-                result.getIsbn()
-        );
+        return BookResponseDto.fromEntity(result);
     }
 
     @Transactional

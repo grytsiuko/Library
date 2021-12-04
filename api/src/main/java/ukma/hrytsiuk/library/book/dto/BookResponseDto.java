@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ukma.hrytsiuk.library.db.entities.book.model.BookEntity;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,4 +15,13 @@ public class BookResponseDto {
     private String title;
     private String author;
     private String isbn;
+
+    public static BookResponseDto fromEntity(BookEntity bookEntity) {
+        return new BookResponseDto(
+                bookEntity.getId(),
+                bookEntity.getTitle(),
+                bookEntity.getAuthor(),
+                bookEntity.getIsbn()
+        );
+    }
 }
