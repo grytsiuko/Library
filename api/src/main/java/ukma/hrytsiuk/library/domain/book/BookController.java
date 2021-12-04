@@ -1,11 +1,11 @@
-package ukma.hrytsiuk.library.book;
+package ukma.hrytsiuk.library.domain.book;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ukma.hrytsiuk.library.book.dto.BookCreateDto;
-import ukma.hrytsiuk.library.book.dto.BookResponseDto;
+import ukma.hrytsiuk.library.domain.book.dto.BookCreateDto;
+import ukma.hrytsiuk.library.domain.book.dto.BookResponseDto;
 
 import javax.validation.Valid;
 

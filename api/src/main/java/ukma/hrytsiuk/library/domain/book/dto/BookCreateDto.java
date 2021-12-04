@@ -1,4 +1,4 @@
-package ukma.hrytsiuk.library.book.dto;
+package ukma.hrytsiuk.library.domain.book.dto;
 
 import lombok.*;
 import ukma.hrytsiuk.library.db.entities.book.model.BookEntity;

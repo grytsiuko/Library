@@ -1,11 +1,12 @@
-package ukma.hrytsiuk.library.book;
+package ukma.hrytsiuk.library.domain.book;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-import ukma.hrytsiuk.library.book.dto.BookCreateDto;
-import ukma.hrytsiuk.library.book.dto.BookResponseDto;
-import ukma.hrytsiuk.library.book.exception.BookIsbnAlreadyExistsException;
-import ukma.hrytsiuk.library.book.exception.BookNotFoundException;
+import ukma.hrytsiuk.library.domain.book.dto.BookCreateDto;
+import ukma.hrytsiuk.library.domain.book.dto.BookResponseDto;
+import ukma.hrytsiuk.library.domain.book.exception.BookIsbnAlreadyExistsException;
+import ukma.hrytsiuk.library.domain.book.exception.BookNotFoundException;
 import ukma.hrytsiuk.library.db.entities.book.BookRepository;
 import ukma.hrytsiuk.library.db.entities.book.model.BookEntity;
 
@@ -15,11 +16,18 @@ import javax.transaction.Transactional;
 @RequiredArgsConstructor
 public class BookService {
     private final BookRepository bookRepository;
+    private final RedisTemplate<Long, BookResponseDto> redisTemplate;
 
     @Transactional
     public BookResponseDto getById(Integer id) {
-        var result = bookRepository.findById(id).orElseThrow(BookNotFoundException::new);
-        return BookResponseDto.fromEntity(result);
+        var cached = redisTemplate.opsForValue().get(id.longValue());
+        if (cached != null) {
+            return cached;
+        }
+        var entity = bookRepository.findById(id).orElseThrow(BookNotFoundException::new);
+        var dto = BookResponseDto.fromEntity(entity);
+        redisTemplate.opsForValue().set(id.longValue(), dto);
+        return dto;
     }
 
     @Transactional
