@@ -2,8 +2,10 @@ package ukma.hrytsiuk.library.errors;
 
 import lombok.*;
 
+import java.io.Serializable;
+
 @Getter
-public class MvcException extends RuntimeException {
+public class MvcException extends RuntimeException implements Serializable {
 
     private final Integer code;
     private final String message;

@@ -1,4 +1,4 @@
-package ukma.hrytsiuk.library.domain.book.exception;
+package ukma.hrytsiuk.library.amqp.rpc.exceptions;
 
 import org.apache.http.HttpStatus;
 import ukma.hrytsiuk.library.errors.MvcException;
