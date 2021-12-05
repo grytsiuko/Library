@@ -3,9 +3,11 @@ package ukma.hrytsiuk.library.amqp.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serializable;
+
 @AllArgsConstructor
 @Getter
-public class AmqpResponse<Response> {
+public class AmqpResponse<Response> implements Serializable {
 
     private boolean success;
     private Response response;

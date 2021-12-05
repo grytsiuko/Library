@@ -23,13 +23,13 @@ public class RPCConfig {
     }
 
     @Bean
-    Exchange directExchange(Queue someQueue) {
-        DirectExchange exchange = new DirectExchange(REMOTING_EXCHANGE);
-        BindingBuilder
-                .bind(someQueue)
-                .to(exchange)
-                .with(REMOTING_BINDING);
-        return exchange;
+    DirectExchange exchange() {
+        return new DirectExchange(REMOTING_EXCHANGE);
+    }
+
+    @Bean
+    Binding binding(Queue queue, DirectExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange).with(REMOTING_BINDING);
     }
 
     @Bean
