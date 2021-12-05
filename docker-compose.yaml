@@ -39,11 +39,25 @@ services:
     environment:
       - POSTGRES_USER=compose-postgres
       - POSTGRES_PASSWORD=compose-postgres
+    volumes:
+      - db_volume
 
   redis:
     image: "redis:alpine"
     container_name: redis
+    volumes:
+      - redis_volume
 
   rabbitmq:
     image: "rabbitmq:3-management"
     container_name: rabbitmq
+    volumes:
+      - rabbitmq_volume
+
+volumes:
+  db_volume:
+    driver: local
+  redis_volume:
+    driver: local
+  rabbitmq_volume:
+    driver: local
