@@ -18,8 +18,8 @@ The project directory contains three modules:
 
 Actions:
 
-- Fetch book by id - API receives a request, checks whether the result is cached and executes DB query if not
-- Save book - API receives a request, executes RPC on Worker and responds synchronously with created entity id of error message
+- (GET /api/books/{id}) Fetch book by id - API receives a request, checks whether the result is cached and executes DB query if not
+- (POST /api/books) Save book - API receives a request, executes RPC on Worker and responds synchronously with created entity id of error message
 
 In order to run application, just run in cmd:
 
