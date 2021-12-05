@@ -10,8 +10,8 @@ import ukma.hrytsiuk.library.domain.book.dto.BookResponseDto;
 public class RedisConfig {
 
     @Bean
-    public RedisTemplate<Long, BookResponseDto> redisTemplate(RedisConnectionFactory connectionFactory) {
-        RedisTemplate<Long, BookResponseDto> template = new RedisTemplate<>();
+    public RedisTemplate<String, BookResponseDto> redisTemplate(RedisConnectionFactory connectionFactory) {
+        RedisTemplate<String, BookResponseDto> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
         return template;
     }

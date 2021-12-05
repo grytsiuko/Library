@@ -16,18 +16,18 @@ import javax.transaction.Transactional;
 @RequiredArgsConstructor
 public class BookService {
     private final BookRepository bookRepository;
-    private final RedisTemplate<Long, BookResponseDto> redisTemplate;
+    private final BookRedisRepository bookRedisRepository;
 
     @Transactional
     public BookResponseDto getById(Integer id) {
-        var cached = redisTemplate.opsForValue().get(id.longValue());
-        if (cached != null) {
-            return cached;
-        }
-        var entity = bookRepository.findById(id).orElseThrow(BookNotFoundException::new);
-        var dto = BookResponseDto.fromEntity(entity);
-        redisTemplate.opsForValue().set(id.longValue(), dto);
-        return dto;
+        return bookRedisRepository
+                .getById(id)
+                .orElseGet(() -> {
+                    var entity = bookRepository.findById(id).orElseThrow(BookNotFoundException::new);
+                    var dto = BookResponseDto.fromEntity(entity);
+                    bookRedisRepository.save(id, dto);
+                    return dto;
+                });
     }
 
     @Transactional
