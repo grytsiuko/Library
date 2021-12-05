@@ -1,4 +1,4 @@
-package ukma.hrytsiuk.library.common;
+package ukma.hrytsiuk.library.errors;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

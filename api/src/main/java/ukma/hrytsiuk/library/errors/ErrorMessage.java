@@ -1,4 +1,4 @@
-package ukma.hrytsiuk.library.common;
+package ukma.hrytsiuk.library.errors;
 
 import lombok.*;
 

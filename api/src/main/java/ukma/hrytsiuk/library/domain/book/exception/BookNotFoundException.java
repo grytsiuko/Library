@@ -1,7 +1,7 @@
 package ukma.hrytsiuk.library.domain.book.exception;
 
 import org.apache.http.HttpStatus;
-import ukma.hrytsiuk.library.common.MvcException;
+import ukma.hrytsiuk.library.errors.MvcException;
 
 public class BookNotFoundException extends MvcException {
     public BookNotFoundException() {
