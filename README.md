@@ -26,3 +26,5 @@ In order to run application, just run in cmd:
 `docker-compose up`
 
 In order to test application, you could use postman collection in the root directory.
+
+There is also some seed data (id 1-9) for easier testing. In docker-compose application logs you could see executed DB queries. Thus, you could be convinced that only first book fetch request is being queried, the next ones are being extracted from cache.
