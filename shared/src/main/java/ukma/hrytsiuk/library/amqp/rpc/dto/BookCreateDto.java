@@ -17,7 +17,7 @@ public class BookCreateDto implements Serializable {
     private String title;
 
     @NotNull
-    @Pattern(regexp = "^(?=(?:\\D*\\d){10}(?:(?:\\D*\\d){3})?$)[\\d-]+$")
+    @Pattern(regexp = "^[0-9]+$")
     private String isbn;
 
     @NotNull

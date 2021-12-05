@@ -17,52 +17,56 @@ public class DbInitializer {
 
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event) {
+        var count = bookRepository.count();
+        if (count > 0) {
+            return;
+        }
         bookRepository.saveAll(
                 List.of(
                         BookEntity.builder()
                                 .title("Harry Potter 1")
                                 .author("J.K. Rowling")
-                                .isbn("1-11-111111-1")
+                                .isbn("1111111111")
                                 .build(),
                         BookEntity.builder()
                                 .title("Harry Potter 2")
                                 .author("J.K. Rowling")
-                                .isbn("2-22-222222-2")
+                                .isbn("2222222222")
                                 .build(),
                         BookEntity.builder()
                                 .title("Harry Potter 3")
                                 .author("J.K. Rowling")
-                                .isbn("3-33-333333-3")
+                                .isbn("3333333333")
                                 .build(),
                         BookEntity.builder()
                                 .title("Harry Potter 4")
                                 .author("J.K. Rowling")
-                                .isbn("4-44-444444-4")
+                                .isbn("4444444444")
                                 .build(),
                         BookEntity.builder()
                                 .title("Harry Potter 5")
                                 .author("J.K. Rowling")
-                                .isbn("5-55-555555-5")
+                                .isbn("5555555555")
                                 .build(),
                         BookEntity.builder()
                                 .title("Harry Potter 6")
                                 .author("J.K. Rowling")
-                                .isbn("6-66-666666-6")
+                                .isbn("6666666666")
                                 .build(),
                         BookEntity.builder()
                                 .title("The Adventures of Sherlock Holmes")
                                 .author("A.C. Doyle")
-                                .isbn("7-77-777777-7")
+                                .isbn("7777777777")
                                 .build(),
                         BookEntity.builder()
                                 .title("The Memoirs of Sherlock Holmes")
                                 .author("A.C. Doyle")
-                                .isbn("8-88-888888-8")
+                                .isbn("8888888888")
                                 .build(),
                         BookEntity.builder()
                                 .title("The Return of Sherlock Holmes")
                                 .author("A.C. Doyle")
-                                .isbn("9-99-999999-9")
+                                .isbn("9999999999")
                                 .build()
                 )
         );
