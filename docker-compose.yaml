@@ -8,12 +8,14 @@ services:
     container_name: api
     depends_on:
       - db
+      - redis
     ports:
       - "8080:8080"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
       - SPRING_DATASOURCE_USERNAME=compose-postgres
       - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_REDIS_HOST=redis
 
   db:
     image: 'postgres:13.1-alpine'
@@ -21,3 +23,7 @@ services:
     environment:
       - POSTGRES_USER=compose-postgres
       - POSTGRES_PASSWORD=compose-postgres
+
+  redis:
+    image: "redis:alpine"
+    container_name: redis
