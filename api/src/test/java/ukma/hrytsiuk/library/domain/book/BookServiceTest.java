@@ -55,7 +55,7 @@ class BookServiceTest {
         var cacheResult = Optional.of(getExampleResponseDto());
         when(bookRedisRepository.getById(EXAMPLE_ID)).thenReturn(cacheResult);
 
-        var response = bookService.getById(5);
+        var response = bookService.getById(EXAMPLE_ID);
 
         assertEquals(EXAMPLE_ID, response.getId());
         assertEquals(EXAMPLE_TITLE, response.getTitle());
