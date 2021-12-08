@@ -1,0 +1,40 @@
+name: 
+
+on: 
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build API docker image
+        id: api-build
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: api/Dockerfile
+          push: false
+          tags: api:latest
+
+      - name: Build Worker docker image
+        id: worker-build
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: worker/Dockerfile
+          push: false
+          tags: worker:latest
