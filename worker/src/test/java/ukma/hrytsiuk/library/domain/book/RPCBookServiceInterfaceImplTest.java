@@ -8,6 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ukma.hrytsiuk.library.amqp.rpc.dto.BookCreateDto;
 import ukma.hrytsiuk.library.amqp.rpc.exceptions.BookIsbnAlreadyExistsException;
 import ukma.hrytsiuk.library.db.entities.book.BookRepository;
+import ukma.hrytsiuk.library.domain.book.RPCBookServiceInterfaceImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
