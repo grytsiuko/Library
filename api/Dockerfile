@@ -12,6 +12,7 @@ COPY worker/pom.xml worker/pom.xml
 
 COPY pom.xml pom.xml
 
+RUN mvn test -pl api,shared
 RUN mvn clean package -pl api,shared
 
 FROM openjdk:11.0-jre
