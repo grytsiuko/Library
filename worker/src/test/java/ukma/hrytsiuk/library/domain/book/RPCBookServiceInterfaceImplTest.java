@@ -34,7 +34,7 @@ class RPCBookServiceInterfaceImplTest {
     @Test
     void save_whenUniqueIsbn_shouldSucceed() {
         var request = getExampleBookCreateDto();
-        when(bookRepository.existsByIsbnIgnoreCase(EXAMPLE_ISBN)).thenReturn(false);
+        when(bookRepository.existsByIsbnIgnoreCase(EXAMPLE_ISBN)).thenReturn(true);
 
         var response = rpcBookServiceInterface.save(request);
 
